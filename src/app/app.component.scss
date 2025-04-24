@@ -13,5 +13,21 @@
   
 .sidebar {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    padding: 1rem;
+
   }
 
+  .toolbar{
+    position: sticky;
+    top: 0;
+    background-color: white; 
+    z-index: 1000;
+    padding: 1rem;
+  }
+
+  .secondary-btn{
+    outline: solid 1px blue;
+    padding: 1rem;
+    margin: auto
+  }

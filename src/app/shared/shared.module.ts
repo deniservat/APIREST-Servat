@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule, ɵisComponentDefPendingResolution } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,11 +11,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { FullNamePipe } from './pipes/full-name.pipe';
-import { FontSizeDirective } from './directives/font-size.directive';
+import { FullNamePipe } from '../core/pipes/full-name.pipe';
+import { FontSizeDirective } from '../core/directives/font-size.directive';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { APP_CONFIG, config } from '../core/injection-token/index';
+
 
 @NgModule({
-  declarations: [SidebarComponent, ToolbarComponent, FullNamePipe, FontSizeDirective],
+  declarations: [SidebarComponent, ToolbarComponent, FullNamePipe, FontSizeDirective, DialogComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -27,6 +31,7 @@ import { FontSizeDirective } from './directives/font-size.directive';
     MatToolbarModule,
     MatIconModule,
     MatTableModule,
+    MatDialogModule, 
   ],
   exports: [
     MatSidenavModule,
@@ -42,6 +47,9 @@ import { FontSizeDirective } from './directives/font-size.directive';
     ToolbarComponent, 
     FullNamePipe, 
     FontSizeDirective,
+  ],
+  providers: [
+    { provide: APP_CONFIG, useValue: config }
   ],
 })
 export class SharedModule {}

@@ -16,9 +16,10 @@
     <mat-form-field class="input-field">
       <mat-label>Course</mat-label>
       <mat-select formControlName="course">
-        <mat-option value="angular">Angular</mat-option>
+        <mat-option *ngFor="let course of coursesTitles"[value]="course.toLowerCase">{{ course }}</mat-option>
+<!--         <mat-option value="angular">Angular</mat-option>
         <mat-option value="react">React</mat-option>
-        <mat-option value="vue">Vue</mat-option>
+        <mat-option value="vue">Vue</mat-option> -->
       </mat-select>
     </mat-form-field>
     <button mat-flat-button type="submit">Add student</button>

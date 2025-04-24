@@ -14,7 +14,14 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022"
+    "module": "ES2022",
+    "baseUrl": "src",
+    "paths": {
+      "@student/*": ["app/feature/student/*"],
+      "@courses/*": ["app/feature/courses/*"],
+      "@shared/*": ["app/shared/*"],
+      "@core/*": ["app/core/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -23,7 +30,7 @@
     "strictTemplates": true
   },
   "exclude": [
-  "src/app/shared/components/sidebar/sidenav.component.ts"
-]
-
+    "src/app/shared/components/sidebar/sidenav.component.ts"
+  ],
+  "include": ["src/**/*.ts"]
 }

@@ -1,5 +1,3 @@
-<h1 appfontSize>Aplicacion Angular</h1>
-
 <mat-drawer-container class="container" autosize>
 
   <mat-drawer #drawer class="sidebar" mode="side" opened>
@@ -7,9 +5,18 @@
   </mat-drawer>
 
   <mat-drawer-content class="sidebar-content">
-    <app-toolbar [drawer]="drawer"></app-toolbar>
-    <app-form></app-form>
-    <app-table></app-table>
+    <app-toolbar class="toolbar" [drawer]="drawer"></app-toolbar>
+
+    @if(showStudents){
+      <student-form></student-form>
+      <student-table></student-table>
+      <button mat-button class="secondary-btn" (click)="toggleStudents()">Show Courses</button>
+    }@else{
+      <course-form></course-form>
+      <course-table></course-table>
+      <button mat-button class="secondary-btn" (click)="toggleStudents()">Show Students</button>
+    }
+
   </mat-drawer-content>
 
 </mat-drawer-container>
