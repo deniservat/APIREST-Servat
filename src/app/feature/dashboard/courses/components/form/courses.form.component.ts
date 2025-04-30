@@ -1,8 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../../../../shared/components/dialog/dialog.component';
-import { CoursesService } from '../../../../core/services/courses.service';
+import { CoursesService } from '@core/services/courses.service';
+import { DialogComponent } from '../../../../../shared/components/dialog/dialog.component';
+
 
 @Component({
   selector: 'course-form',

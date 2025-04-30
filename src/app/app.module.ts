@@ -3,12 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { StudentsModule } from './feature/students/students.module';
-import { CoursesModule } from './feature/courses/courses.module';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './feature/dashboard/home/home.component';
+import { DashboardModule } from "./feature/dashboard/dashboard.module";
+import { AuthModule } from './feature/auth/auth.module';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, StudentsModule, CoursesModule],
+  declarations: [AppComponent, HomeComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    RouterModule,
+    DashboardModule, 
+    AuthModule
+],
   providers: [],
   bootstrap: [AppComponent],
 })

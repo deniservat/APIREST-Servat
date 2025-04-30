@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Course } from '../../feature/courses/interfaces/courses';
+import { Course } from 'app/feature/dashboard/courses/interfaces/courses';
 import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -51,13 +52,20 @@ export class CoursesService {
     this.coursesTitlesSubject.next(this._courses.map((course) => course.title))
   }
 
-/*   addStudent(student:Student):void{
-    this._students.push(student);
+  getByTitle(title: string) {
+    return new Observable<Course>((subscriber) => {
+      const course = this._courses.find(
+        (course) => course.title.toLowerCase() === title.toLowerCase()
+      );
+  
+      if (course) {
+        subscriber.next(course);
+        subscriber.complete(); // complete the observable
+      } else {
+        subscriber.error('Course not found');
+      }
+    });
   }
-  addStudentsObs(student:Student) {
-    this._students = [...this._students, student];
-    this.dataSubject.next(this._students);
-  } */
 
   constructor() { }
 }

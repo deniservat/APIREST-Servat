@@ -1,4 +1,4 @@
-import { InjectionToken, NgModule, ɵisComponentDefPendingResolution } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,10 +16,20 @@ import { FontSizeDirective } from '../core/directives/font-size.directive';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { APP_CONFIG, config } from '../core/injection-token/index';
+import { RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { AuthService } from '../core/services/auth.service';
 
 
 @NgModule({
-  declarations: [SidebarComponent, ToolbarComponent, FullNamePipe, FontSizeDirective, DialogComponent],
+  declarations: [
+    SidebarComponent, 
+    ToolbarComponent, 
+    FullNamePipe, 
+    FontSizeDirective, 
+    DialogComponent,
+  ],
+
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -32,6 +42,9 @@ import { APP_CONFIG, config } from '../core/injection-token/index';
     MatIconModule,
     MatTableModule,
     MatDialogModule, 
+    RouterModule, 
+    MatCardModule,
+    MatCardModule, 
   ],
   exports: [
     MatSidenavModule,
@@ -43,10 +56,13 @@ import { APP_CONFIG, config } from '../core/injection-token/index';
     MatIconModule,
     MatTableModule,
     MatListModule,
+    MatCardModule,
     SidebarComponent, 
     ToolbarComponent, 
     FullNamePipe, 
     FontSizeDirective,
+    RouterModule, 
+
   ],
   providers: [
     { provide: APP_CONFIG, useValue: config }

@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { StudentsService } from '../../../../core/services/students.service';
+
 import { Student } from '../../interfaces/student';
 import { Inject } from '@angular/core';
+import { StudentsService } from '../../../../../core/services/students.service';
 
 @Component({
   selector: 'student-table',

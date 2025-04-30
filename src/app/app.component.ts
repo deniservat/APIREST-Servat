@@ -22,20 +22,6 @@ export class AppComponent {
     });
   }
 
-/*   constructor(){
-     // Convertir la promesa en un Observable
-     this.users = from(
-      fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json())
-    );
-
-    // Suscribirse al observable
-    this.users.subscribe({
-      next: (data) => {
-        console.log(data);
-      }
-    });
-  } */
-
   toggleStudents() {
     this.showStudents = !this.showStudents;
   }

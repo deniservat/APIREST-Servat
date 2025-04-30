@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { StudentsService } from '../../../../core/services/students.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../../../../shared/components/dialog/dialog.component';
-import { APP_CONFIG, AppConfig } from '../../../../core/injection-token';
-import { CoursesService } from '../../../../core/services/courses.service';
-
+import { StudentsService } from '../../../../../core/services/students.service';
+import { CoursesService } from '../../../../../core/services/courses.service';
+import { APP_CONFIG, AppConfig } from '../../../../../core/injection-token/index';
+import { DialogComponent } from '../../../../../shared/components/dialog/dialog.component';
 
 @Component({
   selector: 'student-form',
