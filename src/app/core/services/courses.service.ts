@@ -18,18 +18,22 @@ export class CoursesService {
   private coursesTitlesSubject = new BehaviorSubject<string[]>([]);
   public coursesTitles$ = this.coursesTitlesSubject.asObservable();
 
-  getCourses(){
-    this.coursesSubject.next(this._courses);
+  getCourses(): void {
     this.http
       .get<Course[]>(`${environment.apiUrl}/courses`)
-      .subscribe((courses) => {
-        this._courses = courses;
-        this.coursesSubject.next(this._courses);
-        this.coursesTitlesSubject.next(
-          this._courses.map((course) => course.title)
-        );
+      .subscribe({
+        next: (courses) => {
+          this._courses = courses;
+          this.coursesSubject.next(this._courses);
+          this.coursesTitlesSubject.next(this._courses.map((course) => course.title));
+        },
+        error: (error) => {
+          console.error('Error fetching courses:', error);
+          this.coursesSubject.next([]);
+        }
       });
   }
+  
 
   getCoursesTitles(): void {
     const names = this._courses.map((course) => course.title);
@@ -99,7 +103,7 @@ export class CoursesService {
           console.error('Error updating course:', error);
         }
       });
-    }
+    }    
     
 
 

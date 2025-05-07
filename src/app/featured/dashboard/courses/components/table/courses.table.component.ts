@@ -5,6 +5,7 @@ import { map, tap, filter, takeUntil } from 'rxjs/operators';
 import { CoursesService } from '../../../../../core/services/courses.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CourseDialogComponent } from '../course-dialog/course-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { CourseDialogComponent } from '../course-dialog/course-dialog.component'
       dataCourses: Course[] = [];
       private destroy$ = new Subject<void>();
     
-      constructor(private coursesService: CoursesService, private dialog: MatDialog) {}
+      constructor(private coursesService: CoursesService, private dialog: MatDialog,   private snackBar: MatSnackBar) {}
     
       ngOnInit(): void {
         this.coursesService.getCourses(); // ← esto inicializa el fetch desde json-server
@@ -50,18 +51,6 @@ import { CourseDialogComponent } from '../course-dialog/course-dialog.component'
           });
       }
 
-/*       openEditDialog(course: Course): void {
-        const dialogRef = this.dialog.open(CourseDialogComponent, {
-          width: '400px',
-          data: course
-        });
-      
-        dialogRef.afterClosed().subscribe((result: Course | undefined) => {
-          if (result) {
-            this.coursesService.editCourse(course.title, result); 
-          }
-        });
-      } */
         openEditDialog(course: Course): void {
           const dialogRef = this.dialog.open(CourseDialogComponent, {
             width: '400px',
@@ -73,13 +62,17 @@ import { CourseDialogComponent } from '../course-dialog/course-dialog.component'
               this.coursesService.editCourse(course.id, result); 
             }
           });
-        }
+        } 
+          
+        deleteCourse(id: string): void {
+          this.coursesService.deleteCourse(id);
         
+          // Feedback visual
+          this.snackBar.open('Curso eliminado', 'Cerrar', {
+            duration: 3000
+          });
+        }
 
-      deleteCourse(id: string): void {
-        this.coursesService.deleteCourse(id);
-      }
-      
       resetCourses(): void {
         this.coursesService.courses$
           .pipe(takeUntil(this.destroy$))

@@ -10,6 +10,7 @@ import { AuthModule } from './featured/auth/auth.module';
 import { AuthRoutingModule } from './featured/auth/auth-routing.module';
 import { HomeComponent } from './featured/dashboard/home/home.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -22,6 +23,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     DashboardModule,
     AuthModule,
     AuthRoutingModule,
+    MatSnackBarModule
   ],
   providers: [
     provideHttpClient(withFetch()),

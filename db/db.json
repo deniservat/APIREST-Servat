@@ -21,21 +21,6 @@
   ],
   "courses": [
     {
-      "id": "fc6a5c5e-7e06-4e86-bc33-f1b5b0f5e2d3",
-      "title": "Angular 64",
-      "description": "Angular, el mejor framework de Frontend"
-    },
-    {
-      "id": "06a17c60-e97e-408b-82b6-18743581c0b4",
-      "title": "React 19",
-      "description": "React es una librería para construir interfaces de usuario"
-    },
-    {
-      "id": "af53b3e1-3101-47f3-befb-2b70db457107",
-      "title": "Svelte Kit",
-      "description": "Svelte es un framework para construir aplicaciones web"
-    },
-    {
       "id": "749c658f-4d06-4f5d-acc0-80d77a6c7886",
       "title": "Next js",
       "description": "Next es un framework full stack de aplicaciones web"
