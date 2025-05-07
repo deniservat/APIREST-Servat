@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup" (ngSubmit)="submit()">
+  <h3 appFontSize>Add Students</h3>
+    <mat-form-field class="input-field">
+      <mat-label>First name</mat-label>
+      <input matInput formControlName="firstName" />
+    </mat-form-field>
+    <mat-form-field class="input-field">
+      <mat-label>Last name</mat-label>
+      <input matInput formControlName="lastName" />
+    </mat-form-field>
+
+    <mat-form-field class="input-field"> 
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+    <mat-form-field class="input-field">
+      <mat-label>Course</mat-label>
+      <mat-select formControlName="course">
+        <mat-option *ngFor="let course of coursesTitles" [value]="course.toLowerCase()">{{ course }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-flat-button type="submit">Add student</button>
+  </form>

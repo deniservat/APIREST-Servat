@@ -1,25 +1,65 @@
 import { Injectable } from '@angular/core';
-import { User } from 'app/feature/auth/login/interface/user';
+import { User } from 'app/featured/auth/interfaces/user';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  private _authUser = new BehaviorSubject<User | null>(null);
+  authUser$ = this._authUser.asObservable();
 
-  authUser: User | null = null;
+  private TOKEN = 'my_secret_token';
 
-  constructor() { }
+  private users = [
+    {
+      email: 'den@gmail.com',
+      password: '1234',
+      role: 'admin',
+    },
+    {
+      email: 'sofi@gmail.com',
+      password: '1234',
+      role: 'user',
+    },
+    {
+      email: 'emi@gmail.com',
+      password: '1234',
+      role: 'user',
+    },
+  ];
 
-  login(email: string, password: string) : boolean {
-    if( email !== "den@gmail.com" || password !== "1234"){
+  constructor() {}
+
+  login(email: string, password: string): boolean {
+   
+    const user = this.users.find(
+      (user) => user.email === email && user.password === password
+    );
+
+    if (!user) {
       return false;
     }
-    this.authUser= {
-      email,
-      role: password};
+
+    this._authUser.next(user);
+
+    localStorage.setItem('token', this.TOKEN);
+    // localStorage.setItem('user', JSON.stringify(user));
+
     return true;
   }
-  logout(){
-    this.authUser = null;
+
+  getRole() {
+    return this.authUser$;
+  }
+
+  verifyToken(): Observable<boolean> {
+    const token = localStorage.getItem('token');
+
+    return of(token === this.TOKEN);
+  }
+
+  logout() {
+    this._authUser.next(null);
   }
 }

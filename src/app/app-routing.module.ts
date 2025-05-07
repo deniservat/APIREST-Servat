@@ -1,57 +1,38 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './feature/dashboard/home/home.component';
-import { StudentsComponent } from './feature/dashboard/students/students.component';
-import { CoursesComponent } from './feature/dashboard/courses/courses.component';
-import { DetailsComponent } from './feature/dashboard/courses/pages/details/details.component';
-import { DashboardComponent } from './feature/dashboard/dashboard.component';
-import { LoginComponent } from './feature/auth/login/login.component';
-
+import { DashboardComponent } from './featured/dashboard/dashboard.component';
+import { authGuard } from '@core/guards/auth.guard';
 
 /* const routes: Routes = [
-  { path: 'auth', 
-    component: LoginComponent },
-  { 
-    path: 'dashboard', 
-    component: DashboardComponent,
-    children: [
-    { path: '', 
-      pathMatch: 'full',
-      component: HomeComponent 
-    },
-    { path: 'students', 
-      component: StudentsComponent 
-    },
-    {
-      path: 'courses',
-      children: [
-        { path: '', 
-          pathMatch: 'full', 
-          component: CoursesComponent 
-        },
-        { path: ':title', 
-          component: DetailsComponent 
-        },
-        ],
-      },
-    ] },
-    { path: '**', redirectTo: 'auth' },
+  { path: 'auth',
+    loadChildren: () =>
+      import ("./feature/auth/auth.module").then (m => m.AuthModule),
+  },
+  { path: 'dashboard',
+    loadChildren: () =>
+      import ("./feature/dashboard/dashboard.module").then (m => m.DashboardModule),
+  },
+  { path: '**', redirectTo: 'auth'} 
 ]; */
 
 const routes: Routes = [
-  { path: 'auth', component: LoginComponent },
-  { 
-    path: 'dashboard', 
-    component: DashboardComponent,
-    children: [
-      { path: '', pathMatch: 'full', redirectTo: 'home' }, // redirige a home al entrar
-      { path: 'home', component: HomeComponent },
-      { path: 'students', component: StudentsComponent },
-      { path: 'courses', component: CoursesComponent },   // NO children aquí
-      { path: 'courses/:title', component: DetailsComponent }, // Para detalles
-    ]
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./featured/auth/auth.module').then((m) => m.AuthModule),
   },
-  { path: '**', redirectTo: 'auth' }
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./featured/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+      canActivate: [authGuard],
+  },
+  {
+    path: '**', // Si la ruta no coincide con ninguna de las anteriores, redirige a la página de inicio
+    redirectTo: 'auth',
+  },
 ];
 
 @NgModule({

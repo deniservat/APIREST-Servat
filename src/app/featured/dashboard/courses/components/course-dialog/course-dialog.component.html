@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Edit Student</h2>
+
+<form [formGroup]="formGroup">
+  <mat-form-field class="w-100">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+
+  <div class="d-flex justify-content-around mt-4">
+    <button class="me-2" mat-button type="button" (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" type="button" (click)="confirm()">Confirm</button>
+  </div>
+</form>
