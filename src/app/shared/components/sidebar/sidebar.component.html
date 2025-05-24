@@ -4,5 +4,5 @@
   <a mat-list-item routerLink="/dashboard/home">Home</a>
   <a mat-list-item routerLink="/dashboard/students" *ngIf="(authUser$ | async)?.role === 'admin'">Students</a>
   <a mat-list-item routerLink="/dashboard/courses">Courses</a>
-  <button mat-flat-button (click)="logout()">Logout</button>
+  <button class="btn-logout" mat-flat-button (click)="logout()">Logout</button>
 </mat-nav-list>

@@ -1,5 +1,6 @@
 <button class="example-icon" type="button" mat-button (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
-</button>
-
-<span appFontSize>Welcome, User</span>
+  </button>
+  
+  <span appFontSize *ngIf="user$ | async as user">Welcome, {{ user.name }}</span>
+  

@@ -17,6 +17,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClient } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { courseFeature } from './store/courses.reducer';
+import { CoursesEffects } from './store/courses.effects';
 
 
 @NgModule({
@@ -40,6 +44,8 @@ import { HttpClient } from '@angular/common/http';
     MatCardModule,
     MatChipsModule,
     MatProgressBarModule, 
+    StoreModule.forFeature(courseFeature),
+    EffectsModule.forFeature([CoursesEffects]),
   ],
   exports: [
     CoursesComponent, 

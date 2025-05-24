@@ -1,19 +1,19 @@
 {
   "users": [
     {
-      "id": "b6346e23-195f-4d4b-94a4-f7f289e5d4cd",
+      "name": "Denise",
       "email": "den@gmail.com",
       "password": "1234",
       "role": "admin"
     },
     {
-      "id": "d938b02a-dccc-4a2a-91fd-4ab1f17ce0f9",
+      "name": "Sofia",
       "email": "sofi@gmail.com",
       "password": "1234",
       "role": "user"
     },
     {
-      "id": "a30c18be-0fc4-4d7f-8612-44a59bda7cf3",
+      "name": "Emiliano",
       "email": "emi@gmail.com",
       "password": "1234",
       "role": "user"
@@ -21,9 +21,24 @@
   ],
   "courses": [
     {
-      "id": "749c658f-4d06-4f5d-acc0-80d77a6c7886",
-      "title": "Next js",
-      "description": "Next es un framework full stack de aplicaciones web"
+      "id": "a1b2c3d4-e5f6-7g8h-9i0j-1k2l3m4n5o6p",
+      "title": "Angular 19",
+      "description": "Angular, el mejor framework de Frontend"
+    },
+    {
+      "id": "b2c3d4e5-f6g7-h8i9-j0k1-l2m3n4o5p6q7",
+      "title": "React ",
+      "description": "React es una librería para construir interfaces de usuario"
+    },
+    {
+      "id": "d4e5f6g7-h8i9-j0k1-l2m3-n4o5p6q7r8s9",
+      "title": "Svelte Kit",
+      "description": "Svelte es un framework para construir aplicaciones web"
+    },
+    {
+      "id": "bc217d38-1d1c-4e02-a738-464cf67c0265",
+      "title": "Vue 18",
+      "description": "Vue es una librería para construir interfaces de usuario"
     }
   ],
   "students": [

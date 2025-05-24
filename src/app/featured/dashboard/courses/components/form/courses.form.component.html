@@ -9,5 +9,5 @@
       <mat-label>Description</mat-label>
       <input matInput formControlName="description" />
     </mat-form-field>
-    <button mat-flat-button type="submit">Add Course</button>
+    <button mat-flat-button type="submit" [disabled]="(isLoading$ | async) === true">Add Course</button>
   </form>

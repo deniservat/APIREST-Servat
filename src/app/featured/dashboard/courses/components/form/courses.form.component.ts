@@ -5,6 +5,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../../../../shared/components/dialog/dialog.component';
 import { Course } from '../../interfaces/courses';
 import { v4 as uuidv4 } from 'uuid';
+import { Store } from '@ngrx/store';
+import { RootState } from '../../../../../core/store';
+import { Observable } from 'rxjs';
+import { selectIsLoading } from '../../store/courses.selectors';
+import { CoursesActions } from '../../store/courses.actions';
 
 @Component({
   selector: 'course-form',
@@ -14,6 +19,8 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class FormComponent implements OnInit {
   formGroup!: FormGroup;
+  isEdit: boolean = false;
+  isLoading$: Observable<boolean>;
 
   @Input() course?: Course;
   @Input() mode: 'create' | 'edit' = 'create';
@@ -23,8 +30,11 @@ export class FormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private matDialog: MatDialog,
-    private coursesService: CoursesService
-  ) {}
+    private coursesService: CoursesService,
+    private store: Store<RootState>
+  ) {
+    this.isLoading$ = this.store.select(selectIsLoading);
+  }
 
   ngOnInit(): void {
     this.formGroup = this.fb.group({
@@ -45,8 +55,11 @@ export class FormComponent implements OnInit {
             ...this.formGroup.value
           };
   
-          this.coursesService.addCourse(newCourse);
-          this.formGroup.reset();
+          /* this.coursesService.addCourse(newCourse);
+          this.formGroup.reset(); */
+          this.store.dispatch(
+            CoursesActions.addCourse({course: newCourse})
+          )
         }
       }
     });

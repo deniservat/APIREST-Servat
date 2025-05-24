@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { RootState } from '@core/store';
+import { setAuthUser } from '@core/store/auth/auth.actions';
+import { Store } from '@ngrx/store';
 import { User } from 'app/featured/auth/interfaces/user';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
@@ -13,23 +16,26 @@ export class AuthService {
 
   private users = [
     {
+      name: 'Denise',
       email: 'den@gmail.com',
       password: '1234',
       role: 'admin',
     },
     {
+      name: 'Sofia',
       email: 'sofi@gmail.com',
       password: '1234',
       role: 'user',
     },
     {
+      name: 'Emiliano',
       email: 'emi@gmail.com',
       password: '1234',
       role: 'user',
     },
   ];
 
-  constructor() {}
+  constructor(private store: Store<RootState>) {}
 
   login(email: string, password: string): boolean {
    
@@ -40,6 +46,12 @@ export class AuthService {
     if (!user) {
       return false;
     }
+
+    this.store.dispatch(
+      setAuthUser({
+        payload: user,
+      })
+    );
 
     this._authUser.next(user);
 

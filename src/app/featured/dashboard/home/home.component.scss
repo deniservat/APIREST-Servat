@@ -1,8 +1,16 @@
 .dashboard-home-container {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+  }
+  .home-inner-wrapper{
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 24px;
-    padding: 24px;
+    width: 90%;
+    padding-top: 1rem;
   }
   
   .welcome-card {

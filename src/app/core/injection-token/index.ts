@@ -6,8 +6,8 @@ export interface AppConfig {
 }
 
 export const config = {
- API_URL: "http://...",
- api_key: '123456'
+  API_URL: "http://...",
+  API_KEY: '123456'
 }
 
 export const APP_CONFIG = new InjectionToken<AppConfig>('AppConfig');

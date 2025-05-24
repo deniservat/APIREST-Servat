@@ -18,7 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { APP_CONFIG, config } from '../core/injection-token/index';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
-import { AuthService } from '../core/services/auth.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -45,6 +45,7 @@ import { AuthService } from '../core/services/auth.service';
     RouterModule, 
     MatCardModule,
     MatCardModule, 
+    MatProgressSpinnerModule, 
   ],
   exports: [
     MatSidenavModule,
@@ -62,7 +63,7 @@ import { AuthService } from '../core/services/auth.service';
     FullNamePipe, 
     FontSizeDirective,
     RouterModule, 
-
+    MatProgressSpinnerModule, 
   ],
   providers: [
     { provide: APP_CONFIG, useValue: config }
